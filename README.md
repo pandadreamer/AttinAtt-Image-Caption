@@ -25,7 +25,7 @@ Put three datasets `train2014_resnet101_faster_rcnn_genome.tsv`, `test2014_resne
 Then:
 
 ```bash
-python scripts/make_bu_data.py --output_dir data/cocobu
+$ python scripts/make_bu_data.py --output_dir data/cocobu
 ```
 
 So this will create `data/coco_fc`, `data/cocobu_att` and `data/cocobu_box`, which contains fc, features and boxes.
