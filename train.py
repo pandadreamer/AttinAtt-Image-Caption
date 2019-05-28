@@ -224,7 +224,7 @@ def train(opt):
                     os.mkdir(opt.checkpoint_path)
                 checkpoint_path = os.path.join(opt.checkpoint_path, 'model.pth')
                 torch.save(model.state_dict(), checkpoint_path)
-                print(str(infos['best_val_score']))
+                # print(str(infos['best_val_score']))
                 print("model saved to {}".format(checkpoint_path))
                 if opt.save_history_ckpt:
                     checkpoint_path = os.path.join(opt.checkpoint_path, 'model-%d.pth'%(iteration))
