@@ -33,7 +33,7 @@ So this will create `data/coco_fc`, `data/cocobu_att` and `data/cocobu_box`, whi
 ### Start training
 
 ```bash
-$ python train.py --id topdown --input_json data/cocotalk.json --input_fc_dir data/cocotalk_fc --input_att_dir data/cocotalk_att --input_label_h5 data/cocotalk_label.h5 --batch_size 10 --learning_rate 5e-4 --learning_rate_decay_start 0 --scheduled_sampling_start 0 --checkpoint_path log_topdown --save_checkpoint_every 2000 --val_images_use 5000 --max_epochs 50  
+$ python train.py --id topdown --input_json data/cocotalk.json --input_fc_dir data/cocotalk_fc --input_att_dir data/cocotalk_att --input_label_h5 data/cocotalk_label.h5 --batch_size 10 --learning_rate 5e-4 --learning_rate_decay_start 0 --scheduled_sampling_start 0 --checkpoint_path log_topdown --save_checkpoint_every 2000 --val_images_use 5000 --max_epochs 50 --language_eval 1 --start_from log_topdown
 ```
 
 In my methods, this train result will be stored in `--checkpoint_path`, which is `log_topdown`, so we can continue train the model from this floder.
