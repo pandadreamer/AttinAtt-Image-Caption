@@ -97,6 +97,7 @@ def train(opt):
         optimizer.load_state_dict(torch.load(os.path.join(opt.start_from, 'optimizer.pth')))
     
     total_loss  = 0
+    times = 0
     while True:
         if epoch_done:
             if not opt.noamopt and not opt.reduce_on_plateau:
@@ -134,6 +135,8 @@ def train(opt):
         tmp = [data['fc_feats'], data['att_feats'], data['labels'], data['masks'], data['att_masks']]
         tmp = [_ if _ is None else torch.from_numpy(_).cuda() for _ in tmp]
         fc_feats, att_feats, labels, masks, att_masks = tmp
+
+        times += 1
         
         optimizer.zero_grad()
         if not sc_flag:
@@ -206,11 +209,12 @@ def train(opt):
             if opt.language_eval == 1:
                 current_score = lang_stats
                 f = open('train_log_%s.txt' % opt.id, 'a')
-                f.write('Epoch {}: | Date: {} | TrainLoss: {} | ValLoss: {} | Score: {}'.format(epoch, str(datetime.now()), str(total_loss/2200), str(val_loss), str(current_score)))
+                f.write('Epoch {}: | Date: {} | TrainLoss: {} | ValLoss: {} | Score: {}'.format(epoch, str(datetime.now()), str(total_loss/times), str(val_loss), str(current_score)))
                 f.write('\n')
                 f.close()
                 print('-------------------wrote to log file')
-                total_loss = 0;
+                total_loss = 0
+                times = 0
                 current_score = lang_stats['CIDEr']
             else:
                 current_score = - val_loss
