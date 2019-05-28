@@ -26,15 +26,15 @@ def parse_opt():
     # Model settings
     parser.add_argument('--caption_model', type=str, default="topdown",
                     help='topdown')
-    parser.add_argument('--rnn_size', type=int, default=512,
+    parser.add_argument('--rnn_size', type=int, default=1024,
                     help='size of the rnn in number of hidden nodes in each layer')
     parser.add_argument('--num_layers', type=int, default=1,
                     help='number of layers in the RNN')
     parser.add_argument('--rnn_type', type=str, default='lstm',
                     help='rnn, gru, or lstm')
-    parser.add_argument('--input_encoding_size', type=int, default=512,
+    parser.add_argument('--input_encoding_size', type=int, default=1024,
                     help='the encoding size of each token in the vocabulary, and the image.')
-    parser.add_argument('--att_hid_size', type=int, default=512,
+    parser.add_argument('--att_hid_size', type=int, default=1024,
                     help='the hidden size of the attention MLP; only useful in show_attend_tell; 0 if not using hidden layer')
     parser.add_argument('--fc_feat_size', type=int, default=2048,
                     help='2048 for resnet, 4096 for vgg')
