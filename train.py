@@ -160,7 +160,7 @@ def train(opt):
         # Update the iteration and epoch
         iteration += 1
         if data['bounds']['wrapped']:
-            epoch += 1
+            # epoch += 1
             epoch_done = True
 
         # Write the training loss summary
@@ -180,7 +180,9 @@ def train(opt):
             ss_prob_history[iteration] = model.ss_prob
 
         # make evaluation on validation set, and save model
-        if (iteration % opt.save_checkpoint_every == 0):
+        # if (iteration % opt.save_checkpoint_every == 0):
+        if data['bounds']['wrapped']:
+            epoch += 1
             # eval model
             eval_kwargs = {'split': 'val',
                             'dataset': opt.input_json,
