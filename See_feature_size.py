@@ -29,4 +29,4 @@ if __name__ == '__main__':
                       dtype=np.float32).reshape((item['num_boxes'],-1))
             in_data[item['image_id']] = item
             break
-    print (in_data)
+    print (in_data['features'])
